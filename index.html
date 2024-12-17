@@ -4,129 +4,186 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Safal Dhamala - Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #ddd;
-            background-color: #1c1c1c;
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --text-primary: #e2e8f0;
+            --text-secondary: #cbd5e1;
+            --accent-color: #3b82f6;
+            --transition: all 0.3s ease;
+        }
+
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
-        header {
-            background: linear-gradient(135deg, #2c3e50, #34495e);
-            color: #ecf0f1;
-            padding: 40px;
-            text-align: center;
-            position: relative;
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            scroll-behavior: smooth;
         }
-        header h1 {
-            margin: 0;
-            font-size: 3em;
-        }
-        header p {
-            font-size: 1.2em;
-        }
+
         .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
         }
-        .profile {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-        }
-        .profile img {
-    width: 150px; /* Set the width to your desired size */
-    height: 150px; /* Ensure the height matches the width for a square shape */
-    border-radius: 10px; /* Slightly rounded corners for a modern touch */
-    border: 4px solid #3498db; /* Add a border with a contrasting color */
-    box-shadow: 0 0 10px rgba(0,0,0,0.3); /* Subtle shadow for depth */
-    object-fit: cover; /* Ensure the image covers the container without distortion */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
-}
 
-.profile img:hover {
-    transform: scale(1.05); /* Slight zoom effect on hover */
-    box-shadow: 0 0 15px rgba(0,0,0,0.5); /* Enhanced shadow on hover */
-}
-
-
-        .about, .skills, .projects, .contact {
-            background: #2c3e50;
-            border-radius: 8px;
-            margin: 20px 0;
-            padding: 20px;
-            color: #ecf0f1;
-        }
-        .about p, .skills p, .projects p {
-            font-size: 1.1em;
-        }
-        footer {
-            background: #2c3e50;
-            color: #ecf0f1;
+        header {
             text-align: center;
-            padding: 10px;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
+            padding: 4rem 0;
+            background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
         }
-        a {
-            color: #3498db;
-            text-decoration: none;
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--accent-color);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            transition: var(--transition);
         }
-        a:hover {
-            text-decoration: underline;
+
+        .profile-img:hover {
+            transform: scale(1.05) rotate(3deg);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
         }
+
+        .section {
+            background-color: var(--bg-secondary);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+
+        .section:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .section h2 {
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 1rem;
+        }
+
+        .skill-tag {
+            background-color: var(--bg-primary);
+            padding: 0.5rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .skill-tag:hover {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: var(--text-secondary);
+            font-size: 2rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+            transform: scale(1.2);
+        }
+
         @media (max-width: 768px) {
             .container {
-                width: 90%;
+                padding: 1rem;
             }
-            .profile {
-                flex-direction: column;
-            }
+        }
+
+        .typing-effect {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            margin: 0 auto;
+            animation: typing 3.5s steps(40, end);
+            width: 0;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
         }
     </style>
 </head>
 <body>
-    <header>
+    <header class="container">
+        <img src="me.jpg" alt="Safal Dhamala" class="profile-img">
         <h1>Safal Dhamala</h1>
-        <p>Sophomore at Mississippi State University</p>
+        <p class="typing-effect">Sophomore at Mississippi State University</p>
+        
+        <div class="social-links">
+            <a href="https://github.com/safaldhamala" target="_blank"><i class="ri-github-fill"></i></a>
+            <a href="https://linkedin.com/in/safaldhamala" target="_blank"><i class="ri-linkedin-fill"></i></a>
+            <a href="mailto:sd1868@msstate.edu"><i class="ri-mail-fill"></i></a>
+        </div>
     </header>
 
     <div class="container">
-        <section class="profile">
-            <img src="me.jpg" alt="Safal Dhamala" class="profile-img">
+        <section class="section about">
             <h2>About Me</h2>
-            <p>Belief in foundations</p>
+            <p>Passionate about technology and continuous learning. I believe in building strong foundations and exploring innovative solutions. My journey is driven by curiosity and a desire to make a meaningful impact through technology.</p>
         </section>
 
-        <section class="about">
-            <h2>About</h2>
-            <p>Belief in foundations</p>
-        </section>
-
-        <section class="skills">
+        <section class="section skills">
             <h2>Skills</h2>
-            <p>Skills will be added later.</p>
+            <div class="skills-grid">
+                <div class="skill-tag">Python</div>
+                <div class="skill-tag">React</div>
+                <div class="skill-tag">JavaScript</div>
+                <div class="skill-tag">Machine Learning</div>
+                <div class="skill-tag">Data Structures</div>
+                <div class="skill-tag">Algorithms</div>
+            </div>
         </section>
 
-        <section class="projects">
+        <section class="section projects">
             <h2>Projects</h2>
-            <p>Projects will be added later.</p>
+            <p>Exciting projects coming soon! Stay tuned as I continue to build and showcase my work.</p>
         </section>
 
-        <section class="contact">
+        <section class="section contact">
             <h2>Contact</h2>
-            <p>Email: <a href="mailto:sd1868@msstate.edu">sd1868@msstate.edu</a></p>
-            <p>LinkedIn: <a href="https://www.linkedin.com/in/your-profile" target="_blank">LinkedIn Profile</a></p>
-            <p>GitHub: <a href="https://github.com/your-username" target="_blank">GitHub Profile</a></p>
+            <p>Feel free to reach out to me via email or connect on LinkedIn and GitHub.</p>
+            <div class="social-links">
+                <a href="mailto:sd1868@msstate.edu"><i class="ri-mail-line"></i> Email</a>
+                <a href="https://linkedin.com/in/safaldhamala" target="_blank"><i class="ri-linkedin-line"></i> LinkedIn</a>
+                <a href="https://github.com/safaldhamala" target="_blank"><i class="ri-github-line"></i> GitHub</a>
+            </div>
         </section>
     </div>
 
-    <footer>
-        <p>&copy; 2024 Safal Dhamala</p>
+    <footer style="background-color: var(--bg-secondary); text-align: center; padding: 1rem; color: var(--text-secondary);">
+        &copy; 2024 Safal Dhamala | Built with passion
     </footer>
 </body>
 </html>
