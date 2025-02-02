@@ -1,189 +1,291 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Safal Dhamala - Portfolio</title>
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-    <style>
-        :root {
-            --bg-primary: #0f172a;
-            --bg-secondary: #1e293b;
-            --text-primary: #e2e8f0;
-            --text-secondary: #cbd5e1;
-            --accent-color: #3b82f6;
-            --transition: all 0.3s ease;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Safal Dhamala - Portfolio</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #0f0f0f;
+      color: white;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-            scroll-behavior: smooth;
-        }
+    header {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
+    header h1 {
+      font-size: 3rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2rem;
+      opacity: 0;
+      animation: fadeIn 2s ease-in-out forwards;
+    }
 
-        header {
-            text-align: center;
-            padding: 4rem 0;
-            background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
-        }
+    header p {
+      font-size: 1.2rem;
+      opacity: 0;
+      animation: fadeIn 3s ease-in-out forwards;
+      animation-delay: 1s;
+    }
 
-        .profile-img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid var(--accent-color);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            transition: var(--transition);
-        }
+    .canvas-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
 
-        .profile-img:hover {
-            transform: scale(1.05) rotate(3deg);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-        }
+    /* Tab Navigation */
+    .tabs {
+      display: flex;
+      justify-content: center;
+      background: #1a1a1a;
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
 
-        .section {
-            background-color: var(--bg-secondary);
-            border-radius: 15px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: var(--transition);
-        }
+    .tabs button {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      transition: color 0.3s ease-in-out, border-bottom 0.3s ease-in-out;
+    }
 
-        .section:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-        }
+    .tabs button:hover,
+    .tabs button.active {
+      color: #007BFF;
+      border-bottom: 2px solid #007BFF;
+    }
 
-        .section h2 {
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 0.5rem;
-            margin-bottom: 1rem;
-            color: var(--accent-color);
-        }
+    /* Content Sections */
+    .content {
+      padding: 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+      display: none;
+    }
 
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-            gap: 1rem;
-        }
+    .content.active {
+      display: block;
+    }
 
-        .skill-tag {
-            background-color: var(--bg-primary);
-            padding: 0.5rem;
-            border-radius: 8px;
-            text-align: center;
-            transition: var(--transition);
-        }
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
 
-        .skill-tag:hover {
-            background-color: var(--accent-color);
-            color: white;
-        }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+    }
 
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
+    ul {
+      list-style: none;
+      padding-left: 1rem;
+    }
 
-        .social-links a {
-            color: var(--text-secondary);
-            font-size: 2rem;
-            transition: var(--transition);
-        }
+    ul li {
+      margin-bottom: 0.5rem;
+    }
 
-        .social-links a:hover {
-            color: var(--accent-color);
-            transform: scale(1.2);
-        }
+    footer {
+      text-align: center;
+      padding: 1rem 0;
+      background: #1a1a1a;
+      color: white;
+    }
 
-        @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
-            }
-        }
-
-        .typing-effect {
-            display: inline-block;
-            overflow: hidden;
-            white-space: nowrap;
-            margin: 0 auto;
-            animation: typing 3.5s steps(40, end);
-            width: 0;
-        }
-
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
-    </style>
+    /* Animations */
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header class="container">
-        <img src="me.jpg" alt="Safal Dhamala" class="profile-img">
-        <h1>Safal Dhamala</h1>
-        <p class="typing-effect">Sophomore at Mississippi State University</p>
-        
-        <div class="social-links">
-            <a href="https://github.com/safaldhamala" target="_blank"><i class="ri-github-fill"></i></a>
-            <a href="https://linkedin.com/in/safaldhamala" target="_blank"><i class="ri-linkedin-fill"></i></a>
-            <a href="mailto:sd1868@msstate.edu"><i class="ri-mail-fill"></i></a>
-        </div>
-    </header>
+  <!-- Header Section -->
+  <header>
+    <div class="canvas-container"></div>
+    <h1 style="opacity: 0; animation: fadeIn 2s ease-in-out forwards;">Safal Dhamala</h1>
+    <p style="font-size: 1.2rem; opacity: 0; animation: fadeIn 3s ease-in-out forwards; animation-delay: 1s;">
+      Researcher | Computer Vision, Deep Learning, and Distributed Systems
+    </p>
+  </header>
 
-    <div class="container">
-        <section class="section about">
-            <h2>About Me</h2>
-            <p>Passionate about technology and continuous learning. I believe in building strong foundations and exploring innovative solutions. My journey is driven by curiosity and a desire to make a meaningful impact through technology.</p>
-        </section>
+  <!-- Tab Navigation -->
+  <div class="tabs" role="tablist">
+    <button class="tab-button active" data-tab="about" role="tab" aria-selected="true">About</button>
+    <button class="tab-button" data-tab="experience" role="tab" aria-selected="false">Experience</button>
+    <button class="tab-button" data-tab="projects" role="tab" aria-selected="false">Projects</button>
+    <button class="tab-button" data-tab="education" role="tab" aria-selected="false">Education</button>
+  </div>
 
-        <section class="section skills">
-            <h2>Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-tag">Python</div>
-                <div class="skill-tag">React</div>
-                <div class="skill-tag">JavaScript</div>
-                <div class="skill-tag">Machine Learning</div>
-                <div class="skill-tag">Data Structures</div>
-                <div class="skill-tag">Algorithms</div>
-            </div>
-        </section>
-
-        <section class="section projects">
-            <h2>Projects</h2>
-            <p>Exciting projects coming soon! Stay tuned as I continue to build and showcase my work.</p>
-        </section>
-
-        <section class="section contact">
-            <h2>Contact</h2>
-            <p>Feel free to reach out to me via email or connect on LinkedIn and GitHub.</p>
-            <div class="social-links">
-                <a href="mailto:sd1868@msstate.edu"><i class="ri-mail-line"></i> Email</a>
-                <a href="https://linkedin.com/in/safaldhamala" target="_blank"><i class="ri-linkedin-line"></i> LinkedIn</a>
-                <a href="https://github.com/safaldhamala" target="_blank"><i class="ri-github-line"></i> GitHub</a>
-            </div>
-        </section>
+  <!-- Content Sections -->
+  <div id="about" class="content active" role="tabpanel">
+    <h2>About Me</h2>
+    <div class="card">
+      <p>
+        I am a passionate computer scientist with expertise in Neural Engineering, Distributed Systems, and AI.
+        Currently pursuing my Bachelor's degree in Computer Science at Mississippi State University, I enjoy
+        working on cutting-edge research projects and developing innovative software solutions.
+      </p>
     </div>
+  </div>
 
-    <footer style="background-color: var(--bg-secondary); text-align: center; padding: 1rem; color: var(--text-secondary);">
-        &copy; 2024 Safal Dhamala | Built with passion
-    </footer>
+  <div id="experience" class="content" role="tabpanel">
+    <h2>Experience</h2>
+    <div class="card">
+      <h3>Research Software Engineer (Neural Engineering)</h3>
+      <p><em>Neural Engineering Research Division, Mississippi State University</em> | Aug 2024 – Dec 2024</p>
+      <ul>
+        <li>Designed software for EEG experiments using Python and PsychoPy.</li>
+        <li>Implemented transfer learning to analyze public BCI data.</li>
+        <li>Analyzed EEG data to identify neural patterns and behavioral correlations.</li>
+        <li>Applied signal processing techniques using MATLAB.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Distributed Systems Research Assistant</h3>
+      <p><em>Department of Computer Science, Mississippi State University</em> | May 2024 – Dec 2024</p>
+      <ul>
+        <li>Designed and implemented distributed algorithms.</li>
+        <li>Literature review of 10+ academic papers to inform algorithm design.</li>
+        <li>Implemented graph algorithms, including graph search and traversal.</li>
+        <li>Investigated mobile robot coordination techniques leveraging multi-agent system principles.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="projects" class="content" role="tabpanel">
+    <h2>Projects</h2>
+    <div class="card">
+      <h3>CampusVision: University Building Classifier</h3>
+      <p><em>Technologies: PyTorch, Scikit-learn, NumPy</em></p>
+      <ul>
+        <li>Designed an image classification model to identify university buildings.</li>
+        <li>Collected, curated, and preprocessed a 20 GB dataset of building images.</li>
+        <li>Trained ResNet-18 model using transfer learning techniques, achieving 98% accuracy.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Perception-Based Color Adjusting</h3>
+      <p><em>Technologies: Python, PsychoPy</em></p>
+      <ul>
+        <li>A Python software enabling users to adjust grayscale based on external stimuli for an EEG study.</li>
+        <li>Facilitated data collection for analyzing visual processing during video stimuli.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="education" class="content" role="tabpanel">
+    <h2>Education</h2>
+    <div class="card">
+      <h3>Bachelor of Science in Computer Science</h3>
+      <p><em>Mississippi State University</em> | Aug 2023 – Present</p>
+      <ul>
+        <li>Concentration in AI</li>
+        <li>Relevant Coursework: Software Development Tools, Data Structures & Algorithms, Computer Vision, System Programming</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 Safal Dhamala. All rights reserved.</p>
+  </footer>
+
+  <!-- Three.js and GSAP Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script>
+    // Three.js Scene Setup
+    const canvasContainer = document.querySelector('.canvas-container');
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    canvasContainer.appendChild(renderer.domElement);
+
+    // Create Particles
+    const particlesGeometry = new THREE.BufferGeometry();
+    const particlesCount = 3000; // Reduced particle count for performance
+    const positions = new Float32Array(particlesCount * 3);
+
+    for (let i = 0; i < particlesCount * 3; i++) {
+      positions[i] = (Math.random() - 0.5) * 10;
+    }
+
+    particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    const particlesMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 0.02 });
+    const particles = new THREE.Points(particlesGeometry, particlesMaterial);
+    scene.add(particles);
+
+    camera.position.z = 5;
+
+    function animate() {
+      requestAnimationFrame(animate);
+      particles.rotation.x += 0.001;
+      particles.rotation.y += 0.001;
+      renderer.render(scene, camera);
+    }
+
+    animate();
+
+    // Responsive Canvas
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    // Tab Navigation Logic
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const contentSections = document.querySelectorAll('.content');
+
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove active class from all buttons and sections
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        contentSections.forEach(section => section.classList.remove('active'));
+
+        // Add active class to clicked button and corresponding section
+        button.classList.add('active');
+        const targetSection = document.getElementById(button.dataset.tab);
+        targetSection.classList.add('active');
+      });
+    });
+  </script>
 </body>
 </html>
