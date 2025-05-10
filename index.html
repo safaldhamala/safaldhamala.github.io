@@ -28,24 +28,24 @@
       justify-content: center;
       align-items: center;
       overflow: hidden;
-      text-align: center; /* Ensure text is centered */
+      text-align: center;
     }
 
     header h1 {
-      font-size: 3rem;
+      font-size: 2.5rem; /* Slightly reduced for tighter feel */
       text-transform: uppercase;
-      letter-spacing: 0.2rem;
+      letter-spacing: 0.15rem;
       opacity: 0;
       animation: fadeIn 2s ease-in-out forwards;
     }
 
     header p {
-      font-size: 1.2rem;
+      font-size: 1.1rem; /* Slightly reduced */
       opacity: 0;
       animation: fadeIn 3s ease-in-out forwards;
-      animation-delay: 1s;
-      max-width: 600px; /* Limit width for better readability */
-      margin-top: 1rem; /* Add some space from the h1 */
+      animation-delay: 0.5s; /* Faster delay */
+      max-width: 550px;
+      margin-top: 0.8rem;
     }
 
     .canvas-container {
@@ -62,7 +62,7 @@
       display: flex;
       justify-content: center;
       background: #1a1a1a;
-      padding: 1rem 0;
+      padding: 0.8rem 0; /* Reduced padding */
       position: sticky;
       top: 0;
       z-index: 1000;
@@ -72,8 +72,8 @@
       background: none;
       border: none;
       color: white;
-      font-size: 1rem;
-      padding: 0.5rem 1rem;
+      font-size: 0.95rem; /* Slightly reduced */
+      padding: 0.4rem 0.9rem;
       cursor: pointer;
       transition: color 0.3s ease-in-out, border-bottom 0.3s ease-in-out;
     }
@@ -86,8 +86,8 @@
 
     /* Content Sections */
     .content {
-      padding: 2rem;
-      max-width: 800px;
+      padding: 1.5rem; /* Reduced padding */
+      max-width: 750px; /* Reduced max-width */
       margin: 0 auto;
       display: none;
     }
@@ -97,56 +97,66 @@
     }
 
     .card {
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 8px;
-      padding: 1.5rem; /* Increased padding */
-      margin-bottom: 1.5rem; /* Increased margin */
-      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      background: rgba(255, 255, 255, 0.08); /* Slightly more subtle */
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 6px; /* Slightly smaller radius */
+      padding: 1.2rem; /* Reduced padding */
+      margin-bottom: 1.2rem;
+      transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
     }
 
     .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); /* Enhanced shadow */
+      transform: translateY(-3px); /* Reduced hover effect */
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    .card h2 { /* For section titles like "About Me" */
+        margin-bottom: 1rem;
+        color: #00A1FF;
+        font-size: 1.6rem;
     }
 
     .card h3 {
-        margin-bottom: 0.5rem;
-        color: #00A1FF; /* Accent color for headings */
+        margin-bottom: 0.3rem;
+        color: #00A1FF;
+        font-size: 1.1rem; /* Reduced size */
     }
     
     .card p em {
-        font-size: 0.9rem;
-        color: #ccc; /* Lighter color for dates/ affiliations */
+        font-size: 0.85rem; /* Reduced size */
+        color: #bbb; /* Slightly adjusted color */
         display: block;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.4rem;
     }
 
     ul {
-      list-style: disc; /* Changed to disc for better readability */
-      padding-left: 1.5rem; /* Adjusted padding */
+      list-style: disc;
+      padding-left: 1.2rem; /* Reduced padding */
     }
 
     ul li {
-      margin-bottom: 0.75rem; /* Increased margin */
+      margin-bottom: 0.5rem; /* Reduced margin */
+      font-size: 0.9rem; /* Ensure list items are concise */
     }
+    
+    .card p, .card ul li {
+        font-size: 0.9rem; /* Standardize paragraph and list item font size for conciseness */
+    }
+
 
     footer {
       text-align: center;
-      padding: 1.5rem 0; /* Increased padding */
+      padding: 1.2rem 0;
       background: #1a1a1a;
-      color: white;
-      margin-top: 2rem; /* Added margin top */
+      color: #ccc; /* Lighter footer text */
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
     }
 
     /* Animations */
     @keyframes fadeIn {
-      0% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
+      0% { opacity: 0; }
+      100% { opacity: 1; }
     }
   </style>
 </head>
@@ -155,7 +165,7 @@
     <div class="canvas-container"></div>
     <h1>Safal Dhamala</h1>
     <p>
-      A passionate and dedicated Computer Science student at Mississippi State University with a 4.0 GPA and a concentration in AI. [cite: 8] My interests include Computer Vision, Reinforcement Learning, Wireless Networks, Distributed Systems, and Signal Processing. I am actively seeking opportunities to apply my skills in research and software development.
+      Computer Science student (AI Concentration, 4.0 GPA) at Mississippi State University. Focus: Computer Vision, Reinforcement Learning, Wireless Networks, Distributed Systems.
     </p>
   </header>
 
@@ -168,87 +178,85 @@
   </div>
 
   <div id="about" class="content active" role="tabpanel">
-    <h2>About Me</h2>
     <div class="card">
+      <h2>About Me</h2>
       <p>
-        I am a Computer Science student at Mississippi State University, expecting to graduate in May 2027, with a current GPA of 4.0 and a concentration in Artificial Intelligence. [cite: 8] My academic journey is complemented by hands-on research experience in wireless networks, distributed algorithms, and neural engineering. [cite: 1, 2, 5] I am proficient in a variety of programming languages and frameworks, with a strong interest in developing innovative solutions for complex problems in areas like computer vision, deep learning, and distributed systems.
+        AI-focused Computer Science student at Mississippi State University (Grad: May 2027, GPA: 4.0). Experienced in research (wireless networks, distributed algorithms, neural engineering) and software development.
       </p>
     </div>
   </div>
 
   <div id="experience" class="content" role="tabpanel">
-    <h2>Experience</h2>
     <div class="card">
+    <h2>Experience</h2>
       <h3>Research Assistant (Wireless Networks)</h3>
       <p><em>MSU Wireless, Mississippi State University</em> | Jan 2025 – Present</p>
       <ul>
-        <li>Working on writing a paper on Digital Twin-based ORAN. [cite: 1]</li>
-        <li>Implementing deep reinforcement learning techniques to optimize 6G wireless networks. [cite: 1]</li>
-        <li>Developing ORAN simulation and experimentation environments in Python using SUMO and NetworkX. [cite: 1]</li>
+        <li>Developing Digital Twin-based ORAN paper.</li>
+        <li>Implementing DRL for 6G network optimization.</li>
+        <li>Building ORAN simulations (Python, SUMO, NetworkX).</li>
       </ul>
     </div>
     <div class="card">
       <h3>Research Software Engineer (Neural Engineering)</h3>
-      <p><em>Neural Engineering Research Division, Mississippi State University</em> | Aug 2024 – Dec 2024</p>
+      <p><em>Neural Engineering Research Division, MSU</em> | Aug 2024 – Dec 2024</p>
       <ul>
-        <li>Designed software for EEG experiments using Python and PsychoPy. [cite: 5]</li>
-        <li>Implemented transfer learning to analyze public BCI data. [cite: 5]</li>
-        <li>Analyzed EEG data to identify neural patterns and behavioral correlations. [cite: 5]</li>
-        <li>Applied signal processing techniques using MATLAB. [cite: 6]</li>
+        <li>Designed EEG experiment software (Python, PsychoPy).</li>
+        <li>Applied transfer learning to public BCI data.</li>
+        <li>Analyzed EEG data for neural patterns & behavioral correlations.</li>
+        <li>Utilized MATLAB for signal processing.</li>
       </ul>
     </div>
     <div class="card">
       <h3>Research Assistant (Distributed Algorithms)</h3>
-      <p><em>Department of Computer Science, Mississippi State University</em> | May 2024 – Dec 2024</p>
+      <p><em>Dept. of Computer Science, MSU</em> | May 2024 – Dec 2024</p>
       <ul>
-        <li>Designed and implemented distributed algorithms. [cite: 2]</li>
-        <li>Studied robot coordination techniques leveraging multi-agent system principles and game theory. [cite: 2]</li>
-        <li>Literature review of 10+ academic papers to inform algorithm design for distributed systems. [cite: 3]</li>
-        <li>Implemented graph algorithms, including graph search and traversal. [cite: 4]</li>
-        <li>Paper soon to be published.</li>
+        <li>Designed/implemented distributed algorithms.</li>
+        <li>Studied robot coordination (multi-agent systems, game theory).</li>
+        <li>Reviewed 10+ papers for algorithm design.</li>
+        <li>Implemented graph algorithms (search, traversal). Publication pending.</li>
       </ul>
     </div>
   </div>
 
   <div id="projects" class="content" role="tabpanel">
-    <h2>Projects</h2>
     <div class="card">
+    <h2>Projects</h2>
       <h3>CampusVision: University Building Classifier</h3>
-      <p><em>Technologies: PyTorch, Scikit-learn, NumPy</em></p>
+      <p><em>Tech: PyTorch, Scikit-learn, NumPy</em></p>
       <ul>
-        <li>Designed an image classification model to identify university buildings.</li>
-        <li>Collected, curated, and preprocessed a 20 GB dataset of building images.</li>
-        <li>Trained ResNet-18 model using transfer learning techniques, achieving 98% accuracy.</li>
+        <li>Designed image classification model for university buildings.</li>
+        <li>Curated/preprocessed 20GB image dataset.</li>
+        <li>Trained ResNet-18 via transfer learning; achieved 98% accuracy.</li>
       </ul>
     </div>
     <div class="card">
       <h3>solve2wake</h3>
-      <p><em>Technologies: PyTorch, YOLOv8, iOS</em></p>
+      <p><em>Tech: PyTorch, YOLOv8, iOS</em></p>
       <ul>
-        <li>Developed an iOS alarm app that requires solving a Rubik's Cube to turn off. [cite: 7]</li>
-        <li>Engineered a custom Rubik's Cube dataset and trained YOLOv8 from scratch in PyTorch for accurate cube-state detection and later classification. [cite: 7]</li>
-        <li>Integrated seamless real-time camera processing to verify cube solutions and enhance user engagement. [cite: 7]</li>
-        <li>Delivered a polished mobile experience with optimized performance and intuitive UI on iOS. [cite: 7]</li>
+        <li>iOS alarm app requiring Rubik's Cube solution to dismiss.</li>
+        <li>Engineered custom dataset; trained YOLOv8 for cube-state detection.</li>
+        <li>Integrated real-time camera processing for solution verification.</li>
+        <li>Optimized performance for iOS UI.</li>
       </ul>
     </div>
   </div>
 
   <div id="education" class="content" role="tabpanel">
-    <h2>Education</h2>
     <div class="card">
-      <h3>Bachelor of Science in Computer Science</h3>
-      <p><em>Mississippi State University</em> | Aug 2023 – Present (Expected May 2027)</p>
+    <h2>Education</h2>
+      <h3>B.S. in Computer Science</h3>
+      <p><em>Mississippi State University</em> | Aug 2023 – May 2027 (Expected)</p>
       <ul>
-        <li>Concentration in AI. [cite: 8]</li>
-        <li>GPA: 4.0. [cite: 8]</li>
-        <li>Relevant Coursework: Computer Vision, Software Development Tools, Data Structures & Algorithms, System Programming, Linear Algebra, Calculus IV. [cite: 8, 9]</li>
+        <li>Concentration: AI | GPA: 4.0</li>
+        <li>Coursework: Computer Vision, Software Dev Tools, Data Structures & Algorithms, System Programming, Linear Algebra, Calculus IV.</li>
       </ul>
     </div>
   </div>
 
   <div id="skills" class="content" role="tabpanel">
-    <h2>Technical Skills & Certifications</h2>
     <div class="card">
+    <h2>Technical Skills & Certifications</h2>
         <h3>Languages</h3>
         <p>Python, C, C++, C#, Java, JavaScript, HTML/CSS, LATEX</p>
     </div>
@@ -266,14 +274,14 @@
     </div>
     <div class="card">
         <h3>Tools</h3>
-        <p>Version Control, Agile, Docker, Command Line, Bash Scripting, Signal Processing</p>
+        <p>Version Control, Agile, Docker, CLI, Bash, Signal Processing</p>
     </div>
     <div class="card">
-        <h3>Testing and Debugging</h3>
+        <h3>Testing/Debugging</h3>
         <p>Debuggers, Simulators, Emulators, Pytest</p>
     </div>
     <div class="card">
-        <h3>Database</h3>
+        <h3>Databases</h3>
         <p>MySQL, MongoDB</p>
     </div>
      <div class="card">
@@ -284,7 +292,7 @@
 
   <footer>
     <p>&copy; <script>document.write(new Date().getFullYear())</script> Safal Dhamala. All rights reserved.<br>
-    Contact: sd1868@msstate.edu | LinkedIn: linkedin.com/in/safal-dhamala-17a9b3254 | GitHub: github.com/safaldhamala</p>
+    sd1868@msstate.edu | LinkedIn: safal-dhamala-17a9b3254 | GitHub: safaldhamala</p>
   </footer>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -296,37 +304,32 @@
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({ alpha: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
-    canvasContainer.appendChild(renderer.domElement);
+    if (canvasContainer) canvasContainer.appendChild(renderer.domElement);
 
     // Create Particles
     const particlesGeometry = new THREE.BufferGeometry();
-    const particlesCount = 3000; 
+    const particlesCount = 2000; // Reduced for performance
     const positions = new Float32Array(particlesCount * 3);
-
     for (let i = 0; i < particlesCount * 3; i++) {
-      positions[i] = (Math.random() - 0.5) * 10;
+      positions[i] = (Math.random() - 0.5) * 12; // Slightly wider spread
     }
-
     particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    const particlesMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 0.02 });
+    const particlesMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 0.015 }); // Smaller particles
     const particles = new THREE.Points(particlesGeometry, particlesMaterial);
     scene.add(particles);
-
-    camera.position.z = 5;
+    camera.position.z = 4; // Closer camera
 
     function animateParticles() {
       requestAnimationFrame(animateParticles);
-      particles.rotation.x += 0.0005; // Slowed down rotation
-      particles.rotation.y += 0.0005; // Slowed down rotation
+      particles.rotation.x += 0.0003;
+      particles.rotation.y += 0.0003;
       renderer.render(scene, camera);
     }
-
-    animateParticles();
+    if (canvasContainer) animateParticles(); // Only animate if container exists
 
     // GSAP Animations for header text
-    gsap.from("header h1", { duration: 2, opacity: 0, y: -50, ease: "power3.out" });
-    gsap.from("header p", { duration: 2, opacity: 0, y: -30, ease: "power3.out", delay: 0.5 });
-
+    gsap.from("header h1", { duration: 1.5, opacity: 0, y: -30, ease: "power2.out" });
+    gsap.from("header p", { duration: 1.5, opacity: 0, y: -20, ease: "power2.out", delay: 0.3 });
 
     // Responsive Canvas
     window.addEventListener('resize', () => {
@@ -349,17 +352,23 @@
 
         button.classList.add('active');
         button.setAttribute('aria-selected', 'true');
-        const targetSection = document.getElementById(button.dataset.tab);
+        const targetSectionId = button.dataset.tab;
+        const targetSection = document.getElementById(targetSectionId);
         if (targetSection) {
             targetSection.classList.add('active');
+            // Add an H2 title to each content section dynamically if it doesn't have one
+            // This ensures consistency if content cards are used directly under .content
+            // Or, as in the current setup, the H2 is inside the first card.
         }
       });
     });
 
     // Ensure the first tab content is displayed on load
     document.addEventListener('DOMContentLoaded', () => {
-        const firstTabButton = document.querySelector('.tab-button.active');
+        const firstTabButton = document.querySelector('.tab-button[data-tab="about"]');
         if (firstTabButton) {
+            firstTabButton.classList.add('active');
+            firstTabButton.setAttribute('aria-selected', 'true');
             const firstTabContent = document.getElementById(firstTabButton.dataset.tab);
             if (firstTabContent) {
                 firstTabContent.classList.add('active');
